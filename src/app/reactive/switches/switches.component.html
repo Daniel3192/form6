@@ -1,0 +1,72 @@
+<h2>Template : Switches</h2>
+<hr>
+
+<form [formGroup]="miFormulario" autocomplete="off" (ngSubmit)="guardar()">
+
+    <!-- Radio-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">radioGénero</label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="genero" id="radioMasculino" value="M">
+                <label class="form-check-label" for="radioMasculino"> Masuculino </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="genero" id="radioFemenino" value="F">
+                <label class="form-check-label" for="radioFemenino">
+                    Femenino
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <!-- Switch-->
+    <div class="row">
+        <label class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9">
+            <div class="form-check form-switch mt-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                    name="notificaciones" formControlName="notificaciones">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Quiero recibir notificaciones</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkbox-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Aquí también se puede</label>
+        <div class="col-sm-9">
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" formControlName="condiciones" value=""
+                    id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Términos y Condiciones
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end" (click)="guardar()">Guardar</button>
+        </div>
+    </div>
+
+</form>
+
+<h4>Valor Formulario</h4>
+
+<pre>{{miFormulario.value|json}}</pre>
+<br>
+
+<h4>Válido</h4>
+<pre>{{miFormulario.valid}}</pre>
+<br>
+
+<h4>Persona</h4>
+<pre>{{persona|json}}</pre>
+<br>
+
+<!-- <h4>Condiciones: </h4>
+<pre>{{terminosYCondiciones}}</pre> -->

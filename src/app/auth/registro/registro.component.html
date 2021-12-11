@@ -1,0 +1,114 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="submitFormulario()">
+            <!-- Nombre -->
+            <div class="row mb-3">
+                <label class="col-sm-3 mt-2 col-from-label">Nombre</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName='nombre' placeholder="Nombre de Usuario">
+                    <span *ngIf="campoNoValido('nombre')" class="form-text text-danger">Debe de ser en formato de nombre
+                        y apellido</span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="row mb-3">
+                <label class="col-sm-3 mt-2 col-from-label">Email</label>
+
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" formControlName='email' placeholder="Email de Usuario">
+                    <span *ngIf="campoNoValido('email')" class="form-text text-danger">{{emailComprobar()}}</span>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="row mb-3">
+                <label class="col-sm-3 mt-2 col-from-label">Username</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName='username' placeholder="Id de Usuario">
+                    <span *ngIf="campoNoValido('username')" class="form-text text-danger">El username no puede ser
+                        strider ni ser menor a 5</span>
+                </div>
+
+            </div>
+
+            <!-- Password -->
+            <div class="row mb-3">
+                <label class="col-sm-3 mt-2 col-from-label">Password</label>
+
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" formControlName='password' placeholder="Password">
+                    <span *ngIf="campoNoValido('password')" class="form-text text-danger">Debe de tener una longitud
+                        >5</span>
+                </div>
+
+            </div>
+
+
+            <!-- Passwor2 -->
+            <div class="row mb-3">
+                <label class="col-sm-3 mt-2 col-from-label">Confirmar Password</label>
+
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" formControlName='password2'
+                        placeholder="Confirmar Password">
+                    <span *ngIf="campoNoValido('password2')" class="form-text text-danger">Ambas contraseñas deben de
+                        ser iguales</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end"
+                        [disabled]="miFormulario.pending">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{miFormulario.valid}}</pre>
+
+        <span>Estado</span>
+        <pre>{{miFormulario.status}}</pre>
+
+        <span>Pendiente</span>
+        <pre>{{miFormulario.pending}}</pre>
+
+        <span>Pristine</span>
+        <pre>{{miFormulario.pristine}}</pre>
+
+        <span>Touched</span>
+        <pre>{{miFormulario.touched}}</pre>
+
+        <span>Value</span>
+        <pre>{{miFormulario.value|json}}</pre>
+
+        <span>Errores Nombre</span>
+        <pre>{{miFormulario.controls.nombre.errors|json}}</pre>
+
+        <span>Errores Email</span>
+        <pre>{{miFormulario.controls.email.errors|json}}</pre>
+
+        <span>Errores Username</span>
+        <pre>{{miFormulario.controls.username.errors|json}}</pre>
+
+        <span>Errores Password</span>
+        <pre>{{miFormulario.controls.password.errors|json}}</pre>
+
+        <span>Errores Password2</span>
+        <pre>{{miFormulario.controls.password2.errors|json}}</pre>
+
+        <span>Errores entre campos</span>
+        <pre>{{miFormulario.errors|json}}</pre>
+    </div>
+</div>
